@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 25% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 25% 10%;
+    --primary: 221 83% 43%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 18% 96%;
+    --secondary-foreground: 222 25% 10%;
+    --muted: 220 16% 94%;
+    --muted-foreground: 220 12% 44%;
+    --accent: 35 95% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 14% 88%;
+    --input: 220 14% 88%;
+    --ring: 221 83% 48%;
+    --radius: 0.875rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 221 83% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 14% 88%;
+    --sidebar-ring: 221 83% 48%;
+  }
+
+  .dark {
+    --background: 220 20% 7%;
+    --foreground: 0 0% 95%;
+    --card: 220 20% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 221 83% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 35 95% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 221 83% 48%;
+    --sidebar-background: 220 20% 7%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 221 83% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 221 83% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 0.875rem);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-width: 320px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+  }
+
+  h4 {
+    font-size: clamp(1rem, 0.9375rem + 0.3vw, 1.25rem);
+  }
+
+  h5 {
+    font-size: clamp(0.9375rem, 0.875rem + 0.25vw, 1.125rem);
+  }
+
+  h6 {
+    font-size: clamp(0.875rem, 0.8125rem + 0.2vw, 1rem);
+  }
+
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  @media (min-width: 768px) {
+    input, select, textarea {
+      font-size: clamp(0.875rem, 0.8rem + 0.4vw, 1rem);
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  @media (max-width: 767px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr {
+      margin-bottom: 1rem;
+      border: 1px solid hsl(var(--border));
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+      text-align: right;
+    }
+
+    td:before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0.5rem;
+      width: 45%;
+      padding-right: 0.5rem;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: 600;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+  
+  .font-heading {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.025em;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground font-heading font-bold px-4 sm:px-7 h-11 sm:h-12 shadow-md shadow-primary/20 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 0.875rem);
+    min-height: 44px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-white font-heading font-bold px-4 sm:px-7 h-11 sm:h-12 shadow-md shadow-accent/25 hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/30 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+    font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 0.875rem);
+    min-height: 44px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white bg-white text-primary font-heading font-bold px-4 sm:px-7 h-11 sm:h-12 shadow-md shadow-black/10 hover:bg-white/90 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2;
+    font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 0.875rem);
+    min-height: 44px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary/25 bg-transparent text-primary font-heading font-semibold px-4 sm:px-7 h-11 sm:h-12 hover:bg-primary/5 hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-200;
+    font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 0.875rem);
+    min-height: 44px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .section-label {
+    @apply inline-block text-primary font-bold uppercase tracking-[0.2em] font-heading mb-3;
+    font-size: clamp(0.625rem, 0.5625rem + 0.3vw, 0.75rem);
+  }
+
+  .section-heading {
+    @apply font-heading font-extrabold text-foreground leading-[1.1] tracking-tight;
+    font-size: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+  }
+
+  .section-subtext {
+    @apply text-muted-foreground leading-relaxed max-w-2xl;
+    font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 0.875rem);
+  }
+
+  .card-hover {
+    @apply bg-card rounded-2xl border border-border hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .hero-section {
+    @apply relative overflow-hidden bg-gradient-to-br from-[#0d3fa8] via-[#1555E0] to-[#1e6ef5] text-white;
+    padding: clamp(2rem, 1.5rem + 2vw, 3.5rem) 0;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .container {
+      max-width: 1536px;
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hover\:shadow-xl:hover,
+  .hover\:-translate-y-1:hover,
+  .hover\:-translate-y-0\.5:hover {
+    box-shadow: none;
+    transform: none;
+  }
+}
